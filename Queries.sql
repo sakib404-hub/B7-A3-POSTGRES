@@ -13,6 +13,7 @@ WHERE
 
 
 -- Query 2: Search for all users whose full names start with 'Tanvir' or contain the phrase 'Haque' (case-insensitive).
+
 SELECT
   user_id,
   full_name,
@@ -21,5 +22,19 @@ FROM
   users
 WHERE
   full_name LIKE 'Tanvir%' or full_name like '%Haque%';
+
+
+-- Query 3: Retrieve all booking records where the payment status is missing (NULL), replacing the empty result with 'Action Required'.
+
+SELECT
+  booking_id,
+  user_id,
+  match_id,
+  coalesce(payment_status, 'Action Required') AS systematic_status
+FROM
+  bookings
+WHERE
+  payment_status IS NULL;
+
 
 
