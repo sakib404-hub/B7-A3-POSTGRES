@@ -38,3 +38,16 @@ WHERE
 
 
 
+--Query 4: Retrieve match booking details along with the User's full name and the scheduled Match fixture teams.
+
+SELECT
+  booking_id,
+  full_name,
+  fixture,
+  total_cost
+FROM
+  bookings
+  INNER JOIN users USING (user_id)
+  INNER JOIN matches USING (match_id);
+
+
